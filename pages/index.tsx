@@ -18,7 +18,7 @@ const Home: NextPage = () => {
     setReplies(pre => [...pre, "..."]);
     const r = await fetch("/api/rosetta?message=" + buf, {method: "GET", headers: {"Content-Type": "application/json"}});
     if (!r.ok) {
-      // todo
+      setReplies(pre => pre.map((e, i) => i === pre.length - 1 ? "ぽーん、何らかの問題で正常な回答ができません": e));
       return;
     }
     const j = await r.json();
